@@ -1,0 +1,18 @@
+<div class="panel">
+  <h2>Fila da Cozinha — Pedidos Pendentes</h2>
+
+  <div class="cozinha-list">
+    {% for p in pendentes %}
+      <div class="pedido-card">
+        <div class="meta">Pedido #{{ p.id }} — Mesa {{ p.mesa }}</div>
+        <div class="item">{{ p.item }}</div>
+        <form method="POST">
+          <input type="hidden" name="id_pedido" value="{{ p.id }}">
+          <button type="submit">Marcar como Concluído</button>
+        </form>
+      </div>
+    {% else %}
+      <p>Nenhum pedido pendente.</p>
+    {% endfor %}
+  </div>
+</div>

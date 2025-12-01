@@ -1,0 +1,28 @@
+<!-- envolva tudo em panel -->
+<div class="panel">
+  <div class="garcom-header">
+    <h2>Painel do Garçom</h2>
+    <div><!-- aqui você pode colocar um botão "Sair" ou link --></div>
+  </div>
+
+  <form method="POST" class="garcom-form">
+    <input type="text" name="mesa" placeholder="Mesa" required>
+    <input type="text" name="item" placeholder="Pedido (ex: Espetinho de Frango)" required>
+    <button type="submit">Enviar Pedido</button>
+  </form>
+
+  {% if msg %}
+    <p class="msg">{{ msg }}</p>
+  {% endif %}
+
+  <div class="pedidos-concluidos">
+    <h3>Pedidos concluídos</h3>
+    <ul>
+      {% for p in concluidos %}
+        <li>Mesa {{ p.mesa }} — {{ p.item }} ✔</li>
+      {% else %}
+        <li>Nenhum pedido concluído</li>
+      {% endfor %}
+    </ul>
+  </div>
+</div>

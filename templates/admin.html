@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Painel Admin</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="admin-container">
+        <h1>Painel do Admin</h1>
+
+        <h2>Criar novo usuário</h2>
+        <form method="POST">
+            <select name="tipo" required>
+                <option value="garcom">Garçom</option>
+                <option value="cozinheiro">Cozinheiro</option>
+            </select>
+
+            <input type="text" name="novo_usuario" placeholder="Nome" required>
+            <input type="password" name="nova_senha" placeholder="Senha" required>
+            <button type="submit">Criar</button>
+        </form>
+
+        {% if erro %}
+            <p class="erro">{{ erro }}</p>
+        {% endif %}
+        {% if msg %}
+            <p class="msg">{{ msg }}</p>
+        {% endif %}
+
+        <h2>Garçons cadastrados:</h2>
+        <ul>
+            {% for nome in garcons %}
+                <li>{{ nome }}</li>
+            {% endfor %}
+        </ul>
+
+        <h2>Cozinheiros cadastrados:</h2>
+        <ul>
+            {% for nome in cozinheiros %}
+                <li>{{ nome }}</li>
+            {% endfor %}
+        </ul>
+
+        <a href="/">Voltar ao início</a>
+    </div>
+</body>
+</html>

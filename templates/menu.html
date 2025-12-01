@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu - Espetinho</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-[#f8f6f5]">
+
+<!-- HEADER -->
+<header class="w-full bg-[#221610] text-white p-5 flex justify-between items-center">
+    <h1 class="text-2xl font-bold">Espetinho - Menu</h1>
+
+    <a href="{{ url_for('login') }}"
+       class="px-4 py-2 bg-[#f46a25] rounded-lg font-bold hover:bg-opacity-80">
+       Login
+    </a>
+</header>
+
+<!-- SEÇÃO DE CARDÁPIO -->
+<section class="max-w-6xl mx-auto px-4 py-10">
+    <h2 class="text-3xl font-bold text-[#221610] mb-6">Cardápio</h2>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+
+        <!-- ITEM 1 -->
+        <div class="bg-white rounded-xl shadow-lg overflow-hidden">
+            <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuC2mDPib-q4urnFD3XHwMrPrZg9yv3wNCryi7Kfyw7FqOkqK0AaiQymfanJGoKEOWlWnGAbNhGw7RdhsguQiFrQg5VUGTF6ZTpY9Dkv7QwoJrjSoh1bQdYdqq3JbUZ2HBa0dzeRIvw7o4YZtmDZ8-cBzbT_LAacVM48BjwvVdmo4K1bpZg8ZKP961eUTJJoZ-YsTAZXbGFJ4VBikWqCrShxel0zh2whU5iG3qyKC2nONcjASokyyhEpDZ7XAjNKI0aTmzEaVd388ig"
+                 class="h-48 w-full object-cover">
+            <div class="p-4">
+                <h3 class="text-xl font-semibold text-[#221610]">Espetinho de Alcatra</h3>
+                <p class="text-gray-600">R$ 10,00</p>
+            </div>
+        </div>
+
+        <!-- ITEM 2 -->
+        <div class="bg-white rounded-xl shadow-lg overflow-hidden">
+            <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuBtnu89HHWv_DP9cj6MUiKCPiIOVx51lsFaR2p_2QbGgvcte0BUUND8YP8TNRIALZh5pt6XIsjEmblk63MZ-90Xkx9DabXVmC8VTrS8TovToyZtxtKuHJ8p0p515OpzdzdmlYAGU6V2YWk_FqCb-ruednr6bRkcGJ0e0r0e9DYWluqYzWQlWcjGDQaM3iO8TCzgBKZPy2weHPXUGo4VAi4S4H6GV7aX2SNW2xgEfSkhZII3dSS_tnYaTdsB_SpKIotiJailexCF1_w"
+                 class="h-48 w-full object-cover">
+            <div class="p-4">
+                <h3 class="text-xl font-semibold text-[#221610]">Espetinho de Frango</h3>
+                <p class="text-gray-600">R$ 8,00</p>
+            </div>
+        </div>
+
+        <!-- ITEM 3 -->
+        <div class="bg-white rounded-xl shadow-lg overflow-hidden">
+            <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCNrKwDODgy73XN7o2rSB8kYJKKwE-CLG8a9mTvaQPfpqD9-WdQCRVANt3h0HqYRZz8I3Msc4ddews_g6Gx_Ovunx06UxtrjlX0rGRnse_ZfmhnJnfnbr9A8a-dGVgfHFTVsmo1BSpWY3bE_2sEaFb7A8bAZ73p49gVHT9ehuLPRnEi-6225DFlHmD7dIWBo9o_rR0oPoFv0VvA10omOJF3kLX4iu2Va-3HY6PYJs3VD2byQF9bW0n7cABUykVGLGQZp0SAGy2lgj0"
+                 class="h-48 w-full object-cover">
+            <div class="p-4">
+                <h3 class="text-xl font-semibold text-[#221610]">Espetinho de Queijo Coalho</h3>
+                <p class="text-gray-600">R$ 7,00</p>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- BOTÃO VOLTAR PARA A TELA INICIAL -->
+<div class="text-center py-10">
+    <a href="{{ url_for('inicio') }}"
+       class="text-white bg-[#f46a25] px-6 py-3 rounded-lg font-bold text-lg hover:bg-opacity-80">
+        Voltar para Início
+    </a>
+</div>
+
+</body>
+</html>
