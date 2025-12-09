@@ -72,33 +72,43 @@ tailwind.config = {
       </p>
     </div>
 
-    <!-- FORM LOGIN (funcionando) -->
+    <!-- FORM LOGIN -->
     <form method="POST" action="/login" class="flex w-full flex-col items-stretch gap-4">
 
-  <label class="flex flex-col">
-    <p class="pb-2 text-base font-medium text-text-light-primary dark:text-text-dark-primary">Usuário</p>
-    <input name="usuario"
-      class="form-input h-14 w-full rounded-lg border p-4"
-      placeholder="Digite seu usuário"
-      type="text"
-      required>
-  </label>
+      <label class="flex flex-col">
+        <p class="pb-2 text-base font-medium text-text-light-primary dark:text-text-dark-primary">Usuário</p>
+        <input name="usuario"
+          class="form-input h-14 w-full rounded-lg border p-4"
+          placeholder="Digite seu usuário"
+          type="text"
+          required>
+      </label>
 
-  <label class="flex flex-col">
-    <p class="pb-2 text-base font-medium text-text-light-primary dark:text-text-dark-primary">Senha</p>
-    <input name="senha"
-      class="form-input h-14 w-full rounded-lg border p-4"
-      placeholder="Sua senha"
-      type="password"
-      required>
-  </label>
+      <label class="flex flex-col">
+        <p class="pb-2 text-base font-medium text-text-light-primary dark:text-text-dark-primary">Senha</p>
+        <input name="senha"
+          class="form-input h-14 w-full rounded-lg border p-4"
+          placeholder="Sua senha"
+          type="password"
+          required>
+      </label>
 
-  <button type="submit"
-    class="mt-4 h-12 rounded-lg bg-primary text-white font-bold hover:bg-primary/90">
-    Entrar
-  </button>
+      <button type="submit"
+        class="mt-4 h-12 rounded-lg bg-primary text-white font-bold hover:bg-primary/90">
+        Entrar
+      </button>
+    </form>
 
-</form>
+    <!-- BOTÃO DE CADASTRAR -->
+    <div class="mt-6 text-center">
+      <p class="text-text-light-secondary dark:text-text-dark-secondary">
+        Não tem conta?
+      </p>
+      <a href="/cadastro"
+        class="mt-2 inline-block text-primary font-semibold hover:underline">
+        Criar novo cadastro
+      </a>
+    </div>
 
   </div>
 
