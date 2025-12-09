@@ -1,18 +1,108 @@
-<div class="panel">
-  <h2>Fila da Cozinha — Pedidos Pendentes</h2>
+<!DOCTYPE html>
+<html class="light" lang="pt-BR">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Fila da Cozinha EspetOnline - V1</title>
 
-  <div class="cozinha-list">
-    {% for p in pendentes %}
-      <div class="pedido-card">
-        <div class="meta">Pedido #{{ p.id }} — Mesa {{ p.mesa }}</div>
-        <div class="item">{{ p.item }}</div>
-        <form method="POST">
-          <input type="hidden" name="id_pedido" value="{{ p.id }}">
-          <button type="submit">Marcar como Concluído</button>
-        </form>
-      </div>
-    {% else %}
-      <p>Nenhum pedido pendente.</p>
-    {% endfor %}
-  </div>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;700;900&display=swap" rel="stylesheet"/>
+    
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#f27f0d",
+                        "background-light": "#f8f7f5",
+                        "background-dark": "#221910",
+                    },
+                    fontFamily: { "display": ["Be Vietnam Pro", "sans-serif"] }
+                },
+            },
+        }
+    </script>
+
+</head>
+
+<body class="font-display bg-background-light dark:bg-background-dark">
+
+<div class="flex min-h-screen flex-col">
+
+<header class="flex items-center justify-between border-b border-b-[#f4ede7] dark:border-b-primary/20 px-6 py-3">
+    <div class="flex items-center gap-4 text-[#1c140d] dark:text-background-light">
+        <div class="size-6 text-primary">
+            <svg fill="none" viewBox="0 0 48 48">
+                <path d="M24 4C25.8 14.2 33.8 22.2 44 24C33.8 25.8 25.8 33.8 24 44C22.2 33.8 14.2 25.8 4 24C14.2 22.2 22.2 14.2 24 4Z"
+                      fill="currentColor"/>
+            </svg>
+        </div>
+        <h2 class="text-lg font-bold">EspetOnline</h2>
+    </div>
+
+    <button onclick="location.reload()" 
+            class="flex items-center justify-center h-10 px-3 bg-[#f4ede7] dark:bg-primary/20 rounded-lg text-sm font-bold">
+        🔄 Atualizar
+    </button>
+</header>
+
+<main class="flex-1 p-6 md:p-8">
+
+    <h1 class="text-4xl font-black mb-6 text-[#1c140d] dark:text-background-light">Fila da Cozinha</h1>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+
+        {% for p in pendentes %}
+
+        <!-- CARD DINÂMICO DO PEDIDO -->
+        <div class="flex flex-col rounded-xl shadow-lg bg-[#fcfaf8] dark:bg-background-dark dark:border dark:border-primary/20">
+            <div class="p-6 flex flex-col gap-4">
+
+                <div class="flex justify-between">
+                    <div>
+                        <p class="text-2xl font-bold text-[#1c140d] dark:text-background-light">
+                            Pedido #{{ p.id }}
+                        </p>
+                        <p class="text-base text-[#9c7349] dark:text-primary/70">Mesa: {{ p.mesa }}</p>
+                    </div>
+
+                    <p class="text-sm text-[#9c7349] dark:text-primary/70 whitespace-nowrap">
+                        Há {{ p.tempo }}
+                    </p>
+                </div>
+
+                <div class="border-t border-dashed border-[#f4ede7] dark:border-primary/20 pt-4">
+                    {% for item in p.itens %}
+                        <p class="text-base text-[#1c140d] dark:text-background-light">{{ item }}</p>
+                    {% endfor %}
+                </div>
+
+                <form method="POST">
+                    <input type="hidden" name="id_pedido" value="{{ p.id }}">
+
+                    <button class="mt-2 w-full h-10 bg-primary text-white rounded-lg text-sm font-medium hover:opacity-90">
+                        Marcar como Concluído
+                    </button>
+                </form>
+            </div>
+        </div>
+
+        {% else %}
+
+        <p class="col-span-full text-center text-lg text-[#1c140d] dark:text-background-light opacity-80">
+            Nenhum pedido pendente.
+        </p>
+
+        {% endfor %}
+    </div>
+
+</main>
+
 </div>
+
+</body>
+</html>
