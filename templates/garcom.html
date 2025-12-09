@@ -1,28 +1,119 @@
-<!-- envolva tudo em panel -->
+<!DOCTYPE html>
+<html class="light" lang="pt-br">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+
+    <title>Painel do Garçom EspetOnline - V3</title>
+
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#f48c25",
+                        "background-light": "#f8f7f5",
+                        "background-dark": "#221910",
+                    },
+                    fontFamily: {
+                        display: ["Manrope", "sans-serif"]
+                    },
+                },
+            },
+        }
+    </script>
+
+    <style>
+        .panel {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 30px;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+        }
+        .garcom-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+        .garcom-form input {
+            margin-bottom: 10px;
+        }
+        .msg {
+            margin-top: 10px;
+            padding: 10px;
+            background: #e0ffe0;
+            border-left: 4px solid green;
+            border-radius: 6px;
+        }
+    </style>
+</head>
+
+<body class="font-display bg-background-light text-slate-900">
+
+<!-- 🔶 Painel do Garçom -->
 <div class="panel">
-  <div class="garcom-header">
-    <h2>Painel do Garçom</h2>
-    <div><!-- aqui você pode colocar um botão "Sair" ou link --></div>
-  </div>
 
-  <form method="POST" class="garcom-form">
-    <input type="text" name="mesa" placeholder="Mesa" required>
-    <input type="text" name="item" placeholder="Pedido (ex: Espetinho de Frango)" required>
-    <button type="submit">Enviar Pedido</button>
-  </form>
+    <div class="garcom-header">
+        <h2 class="text-3xl font-bold">Painel do Garçom</h2>
+    
+    </div>
 
-  {% if msg %}
-    <p class="msg">{{ msg }}</p>
-  {% endif %}
+    <!-- 🔶 Formulário -->
+    <form method="POST" class="garcom-form flex flex-col gap-4">
+        <input 
+            type="text" 
+            name="mesa" 
+            placeholder="Mesa" 
+            required 
+            class="border border-slate-300 rounded-lg p-3"
+        >
 
-  <div class="pedidos-concluidos">
-    <h3>Pedidos concluídos</h3>
-    <ul>
-      {% for p in concluidos %}
-        <li>Mesa {{ p.mesa }} — {{ p.item }} ✔</li>
-      {% else %}
-        <li>Nenhum pedido concluído</li>
-      {% endfor %}
-    </ul>
-  </div>
+        <input 
+            type="text" 
+            name="item" 
+            placeholder="Pedido (ex: Espetinho de Frango)" 
+            required 
+            class="border border-slate-300 rounded-lg p-3"
+        >
+
+        <button 
+            type="submit" 
+            class="bg-primary text-white py-3 rounded-lg font-bold hover:opacity-90 transition"
+        >
+            Enviar Pedido
+        </button>
+    </form>
+
+    <!-- 🔶 Mensagem -->
+    {% if msg %}
+        <p class="msg">{{ msg }}</p>
+    {% endif %}
+
+    <!-- 🔶 Pedidos concluídos -->
+    <div class="pedidos-concluidos mt-10">
+        <h3 class="text-2xl font-semibold mb-3">Pedidos Concluídos</h3>
+
+        <ul class="space-y-2">
+            {% for p in concluidos %}
+                <li class="p-3 bg-slate-100 rounded-md">
+                    Mesa {{ p.mesa }} — {{ p.item }} ✔
+                </li>
+            {% else %}
+                <li class="p-3 bg-slate-100 rounded-md">
+                    Nenhum pedido concluído
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+
 </div>
+
+</body>
+</html>
